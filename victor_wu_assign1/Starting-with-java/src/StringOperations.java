@@ -24,8 +24,8 @@ class StringOperations {
 	 * @param line the string to be processed
 	 */
 	void add(String line){	
-	int index = line.indexOf("name") + 6;
-	if (index != 5) {	
+	int index = line.indexOf("element name") + 14;
+	if (index != 13) {	
 		//! Beware of corrupt input XML files, ex. quotations in name	
 		int index_end = line.indexOf('\"', index);
 		String name = line.substring(index, index_end);
