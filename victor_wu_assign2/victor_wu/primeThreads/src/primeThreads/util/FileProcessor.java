@@ -4,11 +4,12 @@
  * @author	Victor Wu
  */ 
 
+package primeThreads.util;
+
 import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-package primeThreads.util;
 
 class FileProcessor
 {
@@ -23,7 +24,7 @@ class FileProcessor
 	 * @param fileName the name of the file to be read
 	 */
 	FileProcessor(String fileName) {
-	LOGGER.writeMessage("FileProcessor Constructed", Logger::DebugLevel::FOUR)
+	LOGGER.writeMessage("FileProcessor Constructed", Logger::DebugLevel::CONSTRUCTOR);
 		try {
 			Path path = Path.get(fileName);
 			in = Files.newBufferedReader(path);

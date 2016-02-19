@@ -1,4 +1,3 @@
-
 package primeThreads.util;
 
 public class Logger{

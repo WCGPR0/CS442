@@ -1,6 +1,6 @@
-import java.util.Stack;
-
 package primeThreads.store;
+
+import java.util.Stack;
 
 public class Results implements StdoutDisplayInterface {
 
@@ -9,7 +9,7 @@ public class Results implements StdoutDisplayInterface {
     // appropriate data structure as private data member
 	Stack primeList = new Stack() {
 		public E push(E item) {	
-		LOGGER.writeMessage("New Entry:" + Integer.toString(item) + "is added", Logger::DebugLevel::TWO);
+		LOGGER.writeMessage("New Entry:" + Integer.toString(item) + "is added", Logger::DebugLevel::ENTRY);
 		super.push(item);
 		}
 	};	
@@ -23,7 +23,7 @@ public class Results implements StdoutDisplayInterface {
    private int computeSum() {
 	int sum = 0;
 	for (int i : primeList)
-		LOGGER.writeMessage("Content: " + Integer.toString(i), Logger::DebugLevel::ONE);
+		LOGGER.writeMessage("Content: " + Integer.toString(i), Logger::DebugLevel::CONTENT);
 		sum += i;
 	return sum;
    }

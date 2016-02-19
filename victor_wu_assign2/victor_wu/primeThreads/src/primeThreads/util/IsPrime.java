@@ -6,7 +6,7 @@ public class IsPrime {
 private static final Logger LOGGER = new Logger();
 
 	IsPrime() {
-		LOGGER.writeMessage("IsPrime Constructed", Logger::DebugLevel::FOUR)
+		LOGGER.writeMessage("IsPrime Constructed", Logger::DebugLevel::CONSTRUCTOR);
 	}
 
 	boolean checkPrime(int x) {

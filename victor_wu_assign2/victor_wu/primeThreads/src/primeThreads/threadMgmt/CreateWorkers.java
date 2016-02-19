@@ -13,7 +13,7 @@ public class CreateWorkers extends Thread {
 		this.resultsInstance = resultsInstance;
 		this.primeInstance = primeInstance;
 
-		LOGGER.writeMessage("CreateWorkers Constructed", Logger::DebugLevel::FOUR)
+		LOGGER.writeMessage("CreateWorkers Constructed", Logger::DebugLevel::CONSTRUCTOR);
 	}
     // this class has the method startWokers(...)
 	public void startWorkers(int NUM_THREADS) {	

@@ -1,9 +1,7 @@
-import java.util.Scanner;
-import java.nio.Paths;
-import java.lang.IllegalArgumentException
-
-
 package primeThreads.driver;
+
+import java.util.Scanner;
+import java.lang.IllegalArgumentException;
 
 public class Driver{
 

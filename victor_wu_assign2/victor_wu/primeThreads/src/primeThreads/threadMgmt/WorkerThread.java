@@ -10,15 +10,16 @@ public class WorkerThread implements Runnable  {
 
 
 	WorkerThread() {
-		LOGGER.writeMessage("WorkerThread Constructed", Logger::DebugLevel::FOUR)
+		LOGGER.writeMessage("WorkerThread Constructed", Logger::DebugLevel::CONSTRUCTOR);
 	}
 
     public void run() {
-		LOGGER.writeMessage("Thread" + Integer.toString(super.getId()) + "is now running", Logger::DebugLevel::THREE);
+		LOGGER.writeMessage("Thread" + Integer.toString(super.getId()) + "is now running", Logger::DebugLevel::RUN);
 	String line;
 	while ((line = myFileProcessor.readLineFromFile()) != null) {
 		int x = parseInt(line);
 		if(primeInstance.isOdd(x)) resultsInstance.push(x);	
-    }
+    		}	
 
+	}
 }
