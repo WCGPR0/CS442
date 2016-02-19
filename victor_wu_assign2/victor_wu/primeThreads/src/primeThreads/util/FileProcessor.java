@@ -11,22 +11,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class FileProcessor
+public class FileProcessor
 {
 	private static final Logger LOGGER = new Logger();
 	
-	InputStream inStream;
-	InputStreamReader inStreamReader;
 	BufferedReader in;
 	/** 
 	 * Default Constructor, and initializes file I/O stream
 	 *
 	 * @param fileName the name of the file to be read
 	 */
-	FileProcessor(String fileName) {
-	LOGGER.writeMessage("FileProcessor Constructed", Logger::DebugLevel::CONSTRUCTOR);
+	public FileProcessor(String fileName) {
+	LOGGER.writeMessage("FileProcessor Constructed", Logger.DebugLevel.CONSTRUCTOR);
 		try {
-			Path path = Path.get(fileName);
+			Path path = Paths.get(fileName);
 			in = Files.newBufferedReader(path);
 		} catch (Exception e) {
 			System.err.println("Exception error opening file " + e);
@@ -37,7 +35,7 @@ class FileProcessor
 	 *
 	 * @return	the line read from the file
 	 */
-	String readLineFromFile() {
+	public String readLineFromFile() {
 		String line = null;
 		try {
 			line = in.readLine();	
