@@ -22,7 +22,7 @@ public class WorkerThread implements Runnable  {
 
     public void run() {
 		LOGGER.writeMessage("Thread" + Long.toString(Thread.currentThread().getId()) + "is now running", Logger.DebugLevel.RUN);
-	String line;
+		String line;
 	while ((line = myFileProcessor.readLineFromFile()) != null) {
 		int x = Integer.parseInt(line);
 		if(primeInstance.isOdd(x)) resultsInstance.add(x);	

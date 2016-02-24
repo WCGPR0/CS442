@@ -51,6 +51,7 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/primeThreads.jar"  fork="true">
+		<arg value ="-ea"/>	
 		<arg value="${arg0}"/>
 		<arg value="${arg1}"/>
 		<arg value="${arg2}"/>
@@ -58,10 +59,12 @@
         </java>
 	
     </target>
-
-<target name="tarzip" > 
-	    <delete file="./firstName_lastName_assign2.tar" quiet="true" /> 
-	    <tar destfile="${BUILD}/dist/firstName_lastName_assign2.tar.gz" basedir="../../" compression="gzip"/>
+<target name="tarzip" depends="clean">
+        <delete file="../../firstName_lastName_assign2.tar.gz" quiet="true" />
+        <tar destfile="../../firstName_lastName_assign2.tar.gz"
+             basedir="../.."
+             includes="firstName_lastName_assign2/**"
+             compression="gzip"/>
 </target>
 
 </project>

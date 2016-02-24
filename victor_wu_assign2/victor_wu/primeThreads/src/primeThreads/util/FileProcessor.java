@@ -35,7 +35,7 @@ public class FileProcessor
 	 *
 	 * @return	the line read from the file
 	 */
-	public String readLineFromFile() {
+	public synchronized String readLineFromFile() {
 		String line = null;
 		try {
 			line = in.readLine();	

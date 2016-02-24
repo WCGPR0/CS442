@@ -21,7 +21,7 @@ public class CreateWorkers extends Thread {
     // this class has the method startWokers(...)
 	public void startWorkers(int NUM_THREADS) {	
 		for (int i = 0; i < NUM_THREADS; ++i) {
-			(new Thread(new WorkerThread(myFileProcessor, resultsInstance, primeInstance))).start(); 
+			(new Thread(new WorkerThread(myFileProcessor, resultsInstance, primeInstance))).run(); 
 		}
 	}
 }

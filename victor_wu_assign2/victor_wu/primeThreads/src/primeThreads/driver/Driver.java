@@ -23,22 +23,23 @@ private static final Logger LOGGER = new Logger();
 		FileProcessor myFileProcessor = null;	
 		Results resultsInstance;
 		IsPrime primeInstance;
-		
 		if (args[0].equals("--help") || args[0].equals("-h")) System.out.println("Usage [input] [threads] [debug]");
 		else if (args.length != 3) throw new IllegalArgumentException("Please use --help for usage information");
 		else {
 			int NUM_THREADS = Integer.parseInt(args[1]), DEBUG_VALUE = Integer.parseInt(args[2]);
 			// Additional validation of command line arguments
-			assert NUM_THREADS <= 5 && NUM_THREADS >= 1;
+			assert (NUM_THREADS <= 5) && (NUM_THREADS >= 1);
 			assert DEBUG_VALUE <= 4 && DEBUG_VALUE >= 0;
 			Logger.setDebugValue(DEBUG_VALUE);
 
+			myFileProcessor = new FileProcessor(args[0]);
 			resultsInstance = new Results();
 			primeInstance = new IsPrime();
 
 			CreateWorkers workers = new CreateWorkers(myFileProcessor, resultsInstance, primeInstance);
 			workers.startWorkers(NUM_THREADS);
 
+			resultsInstance.writeSumToScreen();
 				
 		}
 	} // end main(...)
