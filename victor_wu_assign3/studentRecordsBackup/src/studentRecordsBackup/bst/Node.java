@@ -7,27 +7,33 @@ import studentRecordsBackup.util.Filter;
 import studentRecordsBackup.bst.ObserverI;
 import studentRecordsBackup.bst.SubjectI;
 
-public class Node implements ObserverI, SubjectI {
+public class Node extends SubjectI implements ObserverI {
 	int B_Number;
 
-	private Node next;
+	protected Node left, right;
 	private int key; 
 	
 	private Filter filter;
 
-	Node(int keyIn, filterIn) {
+	Node(int keyIn, Filter filterIn) {
 		key = keyIn;
 		filter = filterIn;
 	}
 	
-	public void insert(int keyIn) {
-	next = new Node(key);
-	next.key = keyIn;
-	if (filter.check(next.key)) {	
+	public void change(int keyIn) {	
+	key = keyIn;
+	if (filter.check(key)) {	
 		setChanged();
 		notifyObservers();
 	}	
 	}
 
+	public int getKey() {
+		return key;
+	}
+
+	public void update(Observable o, Object arg) {
+		key = ((Node)o).key;
+	}
 
 }

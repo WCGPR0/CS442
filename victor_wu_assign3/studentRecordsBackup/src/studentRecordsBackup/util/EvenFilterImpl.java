@@ -8,10 +8,10 @@ package studentRecordsBackup.util;
 
 import studentRecordsBackup.util.Filter;
 
-public class EvenFilterImpl extends Filter
+public class EvenFilterImpl implements Filter
 {
-	@override
-	boolean check(int x) {
-		return x % 2;
+	@Override
+	public boolean check(int x) {
+		return (x & 1) == 1;
 	}
 }

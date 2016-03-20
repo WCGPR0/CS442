@@ -12,8 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileProcessor
-{
-	private static final Logger LOGGER = new Logger();
+{	
 	
 	BufferedReader in;
 	/** 
@@ -22,7 +21,6 @@ public class FileProcessor
 	 * @param fileName the name of the file to be read
 	 */
 	public FileProcessor(String fileName) {
-	LOGGER.writeMessage("FileProcessor Constructed", Logger.DebugLevel.CONSTRUCTOR);
 		try {
 			Path path = Paths.get(fileName);
 			in = Files.newBufferedReader(path);

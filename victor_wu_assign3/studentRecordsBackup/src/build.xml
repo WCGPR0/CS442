@@ -1,4 +1,4 @@
-<project name="bstTrees" default="compile_all" basedir="..">
+<project name="studentRecordsBackup" default="compile_all" basedir="..">
 
   <property name="BUILD.compiler"       value="modern"/>
   <property name="src"                  value="src"/>
@@ -39,13 +39,16 @@
 
   <target name="studentRecordsBackup" depends="prepare">
     <javac srcdir="${src}"
-           includes="studentRecordsBackup/**"
+	   includes="studentRecordsBackup/**"
            excludes="**/package.html"
            destdir="${classes}"
            classpath="${classes}"
            debug="on"
            optimize="on"
-           deprecation="off"/>
+	   deprecation="off">
+	   <compilerarg value="-Xmaxerrs"/>
+	   <compilerarg value="5"/>
+    </javac> 
   </target>
 
 
@@ -54,8 +57,6 @@
 		<arg value ="-ea"/>	
 		<arg value="${arg0}"/>
 		<arg value="${arg1}"/>
-		<arg value="${arg2}"/>
-		<arg value="${arg3}"/>
         </java>
 	
     </target>

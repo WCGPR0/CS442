@@ -7,11 +7,11 @@ package studentRecordsBackup.util;
 
 import studentRecordsBackup.util.Filter;
 
-public class OddFilterImpl extends Filter
+public class OddFilterImpl implements Filter
 {
-	@override
-	boolean check(int x) {
-		return ~(x % 2);
+	@Override
+	public boolean check(int x) {
+		return (x & 1) != 1;
 	}
 
 }

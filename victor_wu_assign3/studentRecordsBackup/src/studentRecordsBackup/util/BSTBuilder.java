@@ -10,8 +10,6 @@ public class BSTBuilder {
 	public void createNewBSTProduct() {	bst = new BST();	}
 
 	public Node buildNode(int keyIn) {
-		bst.insert(keyIn);	
+		return bst.insert(bst.getRoot(), keyIn);	
 	}	
-
-}
 }

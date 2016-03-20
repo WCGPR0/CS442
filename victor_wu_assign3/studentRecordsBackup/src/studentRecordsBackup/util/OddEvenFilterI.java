@@ -7,10 +7,10 @@ package studentRecordsBackup.util;
 
 import studentRecordsBackup.util.Filter;
 
-public class OddEvenFilterI extends Filter
+public class OddEvenFilterI implements Filter
 {
-	@override
-	boolean check(int x) {
+	@Override
+	public boolean check(int x) {
 		return true;
 	}
 }
