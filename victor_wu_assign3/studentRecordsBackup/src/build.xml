@@ -1,4 +1,4 @@
-<project name="primeThreads" default="compile_all" basedir="..">
+<project name="bstTrees" default="compile_all" basedir="..">
 
   <property name="BUILD.compiler"       value="modern"/>
   <property name="src"                  value="src"/>
@@ -9,7 +9,7 @@
   <target name="all" depends="compile_all"/>
 
   <target name="compile_all"
-          depends="primeThreads"/>
+          depends="studentRecordsBackup"/>
 
   <target name="clean">
        <delete dir="${BUILD}"/>
@@ -24,9 +24,9 @@
 
  <target name="jar">
         <mkdir dir="${BUILD}/jar"/>
-        <jar destfile="${BUILD}/jar/primeThreads.jar" basedir="${BUILD}/classes">
+        <jar destfile="${BUILD}/jar/studentRecordsBackup.jar" basedir="${BUILD}/classes">
             <manifest>
-                <attribute name="Main-Class" value="primeThreads.driver.Driver"/>
+                <attribute name="Main-Class" value="studentRecordsBackup.driver.Driver"/>
             </manifest>
         </jar>
     </target>
@@ -37,9 +37,9 @@
   <!-- * means all files in the current directory -->
   <!-- for just java files use *.java -->
 
-  <target name="primeThreads" depends="prepare">
+  <target name="studentRecordsBackup" depends="prepare">
     <javac srcdir="${src}"
-           includes="primeThreads/**"
+           includes="studentRecordsBackup/**"
            excludes="**/package.html"
            destdir="${classes}"
            classpath="${classes}"
@@ -50,7 +50,7 @@
 
 
 <target name="run" depends="jar">
-        <java jar="${BUILD}/jar/primeThreads.jar"  fork="true">
+        <java jar="${BUILD}/jar/studentRecordsBackup.jar"  fork="true">
 		<arg value ="-ea"/>	
 		<arg value="${arg0}"/>
 		<arg value="${arg1}"/>
@@ -60,10 +60,10 @@
 	
     </target>
 <target name="tarzip" depends="clean">
-        <delete file="../../wu_victor_price_matt_assign2.tar.gz" quiet="true" />
-        <tar destfile="../../wu_victor_price_matt_assign2.tar.gz"
+        <delete file="../../wu_victor_assign3.tar.gz" quiet="true" />
+        <tar destfile="../../wu_victor_assign3.tar.gz"
              basedir="../.."
-             includes="victor_wu_assign2/**"
+             includes="victor_wu_assign3/**"
              compression="gzip"/>
 </target>
 
