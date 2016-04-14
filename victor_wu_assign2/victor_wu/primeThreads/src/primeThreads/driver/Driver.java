@@ -12,6 +12,7 @@ import primeThreads.util.FileProcessor;
 import primeThreads.threadMgmt.CreateWorkers;
 import primeThreads.threadMgmt.WorkerThread;
 import primeThreads.store.Results;
+import primeThreads.store.StdoutDisplayInterface;
 
 public class Driver{
 
@@ -37,36 +38,42 @@ private static final Logger LOGGER = new Logger();
 	 * to be null
 	*/	
 		FileProcessor myFileProcessor = null;	
+//	StdoutDisplayInterface 
 		Results resultsInstance = null;
 		IsPrime primeInstance = null;
 		CreateWorkers workerInstance = null;
 		
 		//command line validation
 		
-		try {
-		
-		int a = Integer.parseInt(args[1]);
-		int b = Integer.parseInt(args[2]);
-		
-		if (args[0].equals("--help") || args[0].equals("-h")) System.out.println("Usage [input] [threads] [debug]");
-		
-		/*
-		if (args.length != 3) {
+
+		if (args[0].equals("--help") || args[0].equals("-h")) {
+			System.out.println("Usage [input] [threads] [debug]");
+			System.exit(0);
+		}
+
+		if (		args.length != 3 ||
+				args[0].equals(" ") ||
+				args[0].isEmpty())
+		{
 			System.out.println(("Please type in --help for usage information"));
-		}
-		*/
-		
-		if(args[0].equals(" ") || args[0].isEmpty()) System.out.println("Please type --help");
-		if(args[0] != "*.txt") System.out.println("Please type --help");
-		
-		if((a < 1 && a > 5) || (b < 1 || b > 4))   {
-			System.out.println("Please type in --help for usage information");
+			System.exit(-1);
 		}
 		
-		//if command line arguments pass, do this
-		else {	
-			int NUM_THREADS = Integer.parseInt(args[1]), DEBUG_VALUE = Integer.parseInt(args[2]);
-				
+		try {
+
+		int NUM_THREADS = Integer.parseInt(args[1]);
+		int DEBUG_VALUE = Integer.parseInt(args[2]);
+	
+		if (
+				NUM_THREADS < 1 || NUM_THREADS > 5 ||
+				DEBUG_VALUE < 1 || DEBUG_VALUE > 4)
+		{
+			System.out.println(("Please type in --help for usage information"));
+			System.exit(-1);
+		}	
+		
+		//if command line arguments pass, do this		
+			
 			// Additional validation of command line arguments
 			
 			//assert NUM_THREADS <= 5 && NUM_THREADS >= 1;
@@ -90,9 +97,6 @@ private static final Logger LOGGER = new Logger();
 			CreateWorkers workers = new CreateWorkers(myFileProcessor, resultsInstance, primeInstance);
 			workers.startWorkers(NUM_THREADS);
 			resultsInstance.writeSumToScreen();
-
-				
-		}
 		}
 		
 		catch (Exception e) {

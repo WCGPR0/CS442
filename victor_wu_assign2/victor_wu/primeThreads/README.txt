@@ -76,29 +76,35 @@ TO COMPILE:
 
 ## To compile: 
   ant -buildfile src/build.xml all
-
-## To run by specifying arguments from command line [similarly for the 2nd argument and so on ...]
-## We will use this to run your code
-  ant -buildfile src/build.xml run -Darg0=firstarg 
-
-## To run by specifying args in build.xml (just for debugging, not for submission)
-  ant -buildfile src/build.xml run
-
-## To create tarball for submission
-  ant -buildfile src/build.xml tarzip
-
-  Just extract the files and then do a "make".
 ]
 
 TO RUN:
 
 [
-  To run, NOTE the -ea flags. It enables assertions, which, disabled by default, check if user arguments are valid.
-
-  Please run as: java -ea <ARG1> <ARG2> <ARG3>
+## To run:
+  ant -buildfile src/build.xml run -Darg0=<ARG1> -Darg1=<ARG2> -Darg2=<ARG3>
 	Where ARG1 is FilePath, ARG2 is number of threads, ARG3 is debug level
-  For example:   java -ea primeThreads.driver.Driver ../../primes.txt 4 4
+  For example:   ant -buildfile src/build.xml -Darg0=primes.txt -Darg1=4 -Darg2=4
+
+## To run by Java Jar standalone file:
+  Please run as: java -jar BUILD/jar/primeThreads.jar <ARG1> <ARG2> <ARG3>
+	Where ARG1 is FilePath, ARG2 is number of threads, ARG3 is debug level
+  For example:   java -jar BUILD/jar/primeThreads.jar primes.txt 4 4
+
+## To run by Java classes:
+   Please run as: java -ea primeThreads.driver.Driver <ARG1> <ARG2> <ARG3>
+	Where ARG1 is FilePath, ARG2 is number of threads, ARG3 is debug level
+  For example:   java -ea primeThreads.driver.Driver primes.txt 4 4 
 ]
+
+TO TAR:
+
+[
+  ## To create tarball for submission
+  ant -buildfile src/build.xml tarzip
+]
+
+  Just extract the files and then do a "make".
 
 SPACE/TIME COMPLEXITY:
 
@@ -130,5 +136,6 @@ Matt Price
 ACKNOWLEDGEMENT:
 
 [
-	Special shoutout to Professor Madhusudhan Govindaraju for this fun assignment.
+	Special shoutout to Professor Madhusudhan Govindaraju for this fun assignment,
+	and Gourav Rattihalli for grading this assignment!
 ]
