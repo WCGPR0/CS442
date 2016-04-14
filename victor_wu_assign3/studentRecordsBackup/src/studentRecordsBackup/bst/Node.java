@@ -8,7 +8,6 @@ import studentRecordsBackup.bst.ObserverI;
 import studentRecordsBackup.bst.SubjectI;
 
 public class Node extends SubjectI implements ObserverI {
-	int B_Number;
 
 	protected Node left, right;
 	private int key; 
@@ -35,5 +34,7 @@ public class Node extends SubjectI implements ObserverI {
 	public void update(Observable o, Object arg) {
 		key = ((Node)o).key;
 	}
-
+	public String toString() {
+		return Integer.toString(key);
+	}
 }

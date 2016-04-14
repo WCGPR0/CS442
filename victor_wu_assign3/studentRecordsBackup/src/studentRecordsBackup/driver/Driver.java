@@ -46,8 +46,8 @@ public static void main(String[] args) {
 		subject.registerObserver(backup_1_BSTBuilder.buildNode(student_record),evenFilter);
 		subject.registerObserver(backup_2_BSTBuilder.buildNode(student_record),oddFilter);
 	}
-/*	System.out.println(main_BSTBuilder);
+	System.out.println(main_BSTBuilder);
 	System.out.println(backup_1_BSTBuilder);
-	System.out.println(backup_2_BSTBuilder);*/
+	System.out.println(backup_2_BSTBuilder);
 }
 }

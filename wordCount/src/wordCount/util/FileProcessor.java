@@ -15,14 +15,14 @@ public class FileProcessor
 {
 	private static final Logger LOGGER = new Logger();
 	
-	BufferedReader in = null;
+	BufferedReader in;
 	/** 
 	 * Default Constructor, and initializes file I/O stream
 	 *
 	 * @param fileName the name of the file to be read
 	 */
 	public FileProcessor(String fileName) {
-	Logger.writeMessage("FileProcessor Constructed", Logger.DebugLevel.CONSTRUCTOR);
+	LOGGER.writeMessage("FileProcessor Constructed", Logger.DebugLevel.CONSTRUCTOR);
 		try {
 			Path path = Paths.get(fileName);
 			in = Files.newBufferedReader(path);
@@ -35,7 +35,7 @@ public class FileProcessor
 	 *
 	 * @return	the line read from the file
 	 */
-	public String readLineFromFile() {
+	public synchronized String readLineFromFile() {
 		String line = null;
 		try {
 			line = in.readLine();	
