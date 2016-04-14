@@ -1,7 +1,7 @@
 package primeThreads.threadMgmt;
 
 import primeThreads.util.FileProcessor;
-import primeThreads.store.Results;
+import primeThreads.store.StdoutDisplayInterface;
 import primeThreads.util.IsPrime;
 import primeThreads.util.Logger;
 
@@ -14,7 +14,7 @@ import primeThreads.util.Logger;
  */
 public class WorkerThread implements Runnable  {
 	FileProcessor myFileProcessor;
-	Results resultsInstance;
+	StdoutDisplayInterface resultsInstance;
 	IsPrime primeInstance;
 	
 	private static final Logger LOGGER = new Logger();
@@ -26,7 +26,7 @@ public class WorkerThread implements Runnable  {
  * @param primeInstanceIn a primeInstance object
  * instantiates these fields when a new WorkerThread object is declared
  */
-	public WorkerThread(FileProcessor myFileProcessorIn, Results resultsInstanceIn, IsPrime primeInstanceIn) {
+	public WorkerThread(FileProcessor myFileProcessorIn, StdoutDisplayInterface resultsInstanceIn, IsPrime primeInstanceIn) {
 		LOGGER.writeMessage("WorkerThread Constructed", Logger.DebugLevel.CONSTRUCTOR);
 		this.myFileProcessor = myFileProcessorIn;
 		this.resultsInstance = resultsInstanceIn;

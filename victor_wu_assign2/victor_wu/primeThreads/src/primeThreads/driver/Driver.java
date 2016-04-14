@@ -38,8 +38,7 @@ private static final Logger LOGGER = new Logger();
 	 * to be null
 	*/	
 		FileProcessor myFileProcessor = null;	
-//	StdoutDisplayInterface 
-		Results resultsInstance = null;
+	StdoutDisplayInterface resultsInstance = null;
 		IsPrime primeInstance = null;
 		CreateWorkers workerInstance = null;
 		

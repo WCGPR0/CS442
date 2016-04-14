@@ -2,8 +2,8 @@ package primeThreads.threadMgmt;
 
 import primeThreads.util.Logger;
 import primeThreads.util.FileProcessor;
-import primeThreads.store.Results;
 import primeThreads.util.IsPrime;
+import primeThreads.store.StdoutDisplayInterface;
 
 /**
  * the CreateWorkers class instantiates the FileProcessor,
@@ -13,7 +13,7 @@ import primeThreads.util.IsPrime;
  */ 
 public class CreateWorkers extends Thread {
 	FileProcessor myFileProcessor;
-	Results resultsInstance;
+	StdoutDisplayInterface resultsInstance;
 	IsPrime primeInstance;
 	private static final Logger LOGGER = new Logger();
 
@@ -24,7 +24,7 @@ public class CreateWorkers extends Thread {
  * @param primeInstanceIn a primeInstance object
  * instantiates these fields when a new CreateWorkers object is declared
  */
-	public CreateWorkers(FileProcessor myFileProcessorIn, Results resultsInstanceIn, IsPrime primeInstanceIn) {
+	public CreateWorkers(FileProcessor myFileProcessorIn, StdoutDisplayInterface resultsInstanceIn, IsPrime primeInstanceIn) {
 		this.myFileProcessor = myFileProcessorIn;
 		this.resultsInstance = resultsInstanceIn;
 		this.primeInstance = primeInstanceIn;
