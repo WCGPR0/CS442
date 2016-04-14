@@ -5,12 +5,25 @@ import primeThreads.util.FileProcessor;
 import primeThreads.store.Results;
 import primeThreads.util.IsPrime;
 
+/**
+ * the CreateWorkers class instantiates the FileProcessor,
+ * Results, and IsPrime objects, logs the creation of the constructor
+ * into the logger, and creates worker threads based on the number of threads
+ * passed into the command line.
+ */ 
 public class CreateWorkers extends Thread {
 	FileProcessor myFileProcessor;
 	Results resultsInstance;
 	IsPrime primeInstance;
 	private static final Logger LOGGER = new Logger();
 
+/**
+ * createworkers constructor
+ * @param myFileProcessorIn a FileProcessor object
+ * @param resultsInstanceIn a resultsInstance object
+ * @param primeInstanceIn a primeInstance object
+ * instantiates these fields when a new CreateWorkers object is declared
+ */
 	public CreateWorkers(FileProcessor myFileProcessorIn, Results resultsInstanceIn, IsPrime primeInstanceIn) {
 		this.myFileProcessor = myFileProcessorIn;
 		this.resultsInstance = resultsInstanceIn;

@@ -1,5 +1,7 @@
 package primeThreads.driver;
 
+// import statements
+
 import java.util.Scanner;
 import java.lang.IllegalArgumentException;
 
@@ -15,14 +17,25 @@ public class Driver{
 
 private static final Logger LOGGER = new Logger();
 
+	/**
+	 * Some validation is done at the command line to check that 
+	 * the right amount of arguments are getting passed in. If the number
+	 * of threads is between 1 and 5, and the debug value is between 1 and
+	 * 4, all the objects are created. The start workers method is called 
+	 * @param String
+	 * @return String
+	 */
 	public static void main(String args[]) throws Exception {
-inpu
+
 		//System.out.println("\n The args[0] is: " + args[0]);
 		//System.out.println("\n The args[1] is: " + args[1]);
 		//System.out.println("\n The args[2] is: " + args[2]);
 		/* Assert that the provided args[0] is okay */
 		
-		//instances to pass to CreateWorkers constructor
+	/**
+	 * Declares FileProcessor, Results, IsPrime, CreateWorkers objects
+	 * to be null
+	*/	
 		FileProcessor myFileProcessor = null;	
 		Results resultsInstance = null;
 		IsPrime primeInstance = null;
@@ -60,10 +73,20 @@ inpu
 			//assert DEBUG_VALUE <= 4 && DEBUG_VALUE >= 0;
 			Logger.setDebugValue(DEBUG_VALUE);
 
+		/**
+		 * create the resultsInstance, primeInstance, 
+		 * myFileProcessor objects
+		 */
 			resultsInstance = new Results();
 			primeInstance = new IsPrime();
 			myFileProcessor = new FileProcessor(args[0]);
 
+		/**
+		 * create CreateWorkers object
+		 * @param myFileProcessor the object passed in
+		 * @param resultsInstance the object passed in
+		 * @param primeInstance the object passed in
+		 */
 			CreateWorkers workers = new CreateWorkers(myFileProcessor, resultsInstance, primeInstance);
 			workers.startWorkers(NUM_THREADS);
 			resultsInstance.writeSumToScreen();

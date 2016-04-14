@@ -11,6 +11,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * FileProcessor class has a method readLineFromFile that reads line
+ * by line input from a file
+ * also has a toString method for debugging purposes
+ */ 
 public class FileProcessor
 {
 	private static final Logger LOGGER = new Logger();
