@@ -52,7 +52,8 @@ private static final Logger LOGGER = new Logger();
 
 		if (		args.length != 3 ||
 				args[0].equals(" ") ||
-				args[0].isEmpty())
+				args[0].isEmpty()
+		)
 		{
 			System.out.println(("Please type in --help for usage information"));
 			System.exit(-1);
