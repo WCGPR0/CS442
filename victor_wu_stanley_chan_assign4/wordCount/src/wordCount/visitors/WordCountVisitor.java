@@ -8,13 +8,12 @@ public class WordCountVisitor implements TreeProcessingVisitorI{
 
    // int charCount;w
    // int wordCount;
-    //Vector<Node> mostFrequentWordNodes;
-    
+    static Vector<Node> mostFrequentWordNodes; 
     
     public WordCountVisitor(){
     //    charCount = 0;
      //   wordCount = 0;
-     //   mostFrequentWordNodes = new Vector<Node>();
+    mostFrequentWordNodes = new Vector<Node>();
     }
     
     public int getCharCount(Node currentNode){
@@ -34,7 +33,6 @@ public class WordCountVisitor implements TreeProcessingVisitorI{
     }
     
     public Node getMostFrequent(Node currentNode){
-  //      Vector<Node> mostFrequentWordNodes = new Vector<Node>();
 /*        if(currentNode != null){
             if(vector.size() == 0){
                 mostFrequentWordNodes.add(currentNode);
@@ -43,15 +41,25 @@ public class WordCountVisitor implements TreeProcessingVisitorI{
   */
 	Node max = currentNode;	
 	if (currentNode.getLeftNode() != null) {
-		Node node = getMostFrequent(currentNode.getLeftNode());
-		max = node.count < max.count ? max : node; 
-			}
+		Node node = getMostFrequent(currentNode.getLeftNode());		
+	       	if (node.count == max.count)
+			mostFrequentWordNodes.add(node);	
+		else if (node.count > max.count) {
+			max = node;
+			mostFrequentWordNodes.clear();
+		}
+	}
 	if (currentNode.getRightNode() != null) {
 		Node node = getMostFrequent(currentNode.getRightNode());
-		max = node.count < max.count ? max : node;
+		if (node.count == max.count)
+			mostFrequentWordNodes.add(node);
+		else if (node.count > max.count) {
+			max = node;
+			mostFrequentWordNodes.clear();
+		}
 	}
 	return max;	
-    }
+    } 
 
     public int getTotalWordCount(Node currentNode) {
 	int count = getWordCount(currentNode);
@@ -67,7 +75,11 @@ public class WordCountVisitor implements TreeProcessingVisitorI{
     public void visit(TreeBuilder tb) throws Exception{
         Node currentNode = tb.getRootNode();
 	System.out.printf("The total number of words is: %d\n", getTotalWordCount(currentNode));
-	System.out.printf("The most frequently used word is: %d\n", getMostFrequent(currentNode).count);
+	System.out.printf("The most frequently used word is: %s ", getMostFrequent(currentNode).myString);
+	for (Node n : mostFrequentWordNodes) {
+		System.out.print(n.myString + " ");
+	}
+	System.out.println();
         System.out.printf("The number of characters (without whitespaces) is: %d\n", getCharCount(currentNode));
         System.out.printf("The word < %s > occurs the following times: %d\n", currentNode.myString, getWordCount(currentNode));
 

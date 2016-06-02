@@ -60,9 +60,9 @@
      </target>
 
     <target name="tarzip" >
-        <delete file="../../stanley_chan_assign4.tar.gz" quiet="true" />
-        <tar destfile="../../stanley_chan_assign4.tar.gz" basedir="../../"
-        includes="stanley_chan_assign4/**" compression="gzip"/>
+        <delete file="../../victor_wu_stanley_chan_assign4.tar.gz" quiet="true" />
+        <tar destfile="../../victor_wu_stanley_chan_assign4.tar.gz" basedir="../../"
+        includes="victor_wu_stanley_chan_assign4/**" compression="gzip"/>
         <!--
          <delete file="./stanley_chan_assign2.tar" quiet="true" />
          <tar destfile="${BUILD}/dist/stanley_chan_assign2.tar.gz" basedir="../../" compression="gzip"/>

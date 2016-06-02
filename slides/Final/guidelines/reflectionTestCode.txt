@@ -1,0 +1,82 @@
+
+// Code developed by Kevin Johnson
+
+package reflection;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
+
+public class Test
+{
+   public static void main(String[] args)
+   {
+      TestObject obj = new TestObject();
+      Class<TestObject> c = TestObject.class;
+
+      Method methodInt = null;
+      Method methodInteger = null;
+      try
+      {
+         //Integer.TYPE is the "class" for int - int.class is also valid
+         //Integer.class is the class for Integer
+         methodInt = c.getMethod("test", Integer.TYPE);
+         methodInteger = c.getMethod("test", Integer.class);
+      }
+      catch (NoSuchMethodException e)
+      {
+         System.out.println("No such method: " + e.getMessage());
+         System.exit(1);
+      }
+
+      //methodInt     is now the TestObject method test(int value)
+      //methodInteger is now the TestObject method test(Integer value)
+
+      try
+      {
+         methodInt.invoke(obj, 123);
+         methodInteger.invoke(obj, 456);
+      }
+      catch (IllegalAccessException e)
+      {
+         System.out.println("Illegal access: " + e.getMessage());
+         System.exit(1);
+      }
+      catch (InvocationTargetException e)
+      {
+         System.out.println("Invocation target exception: " + e.getMessage());
+         System.out.println("Exception: " + e.getTargetException().getMessage());
+         System.exit(1);
+      }
+   }
+
+   private static class TestObject
+   {
+      public void test(int value)
+      {
+         System.out.println("int method called: " + value);
+      }
+      public void test(Integer value)
+      {
+         System.out.println("Integer method called: " + value);
+      }
+   }
+}
+-----
+
+// Running this program prints out:
+// int method called: 123
+// Integer method called: 456
+
+//Integer.class is the class for Integer (the box type)
+// Integer.TYPE or int.class is the "class" for the primitive int
+
+// You can use these as parameters for the Class.getMethod or
+// Class.getConstructor methods to get the corresponding methods and
+// constructors.
+
+// NoSuchMethodException is thrown if the method/constructor is not
+// visible (doesn't exist, is private, etc). IllegalAccessException
+// appears to be thrown if you get a Method object that corresponds to a
+// non-visible method/constructor (might be possible if you pass a Method
+// to an object that can't use it). InvocationTargetException is thrown
+// if the method/constructor itself throws an exception.
